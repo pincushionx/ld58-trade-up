@@ -1,0 +1,25 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://c8ri81l6gj8ne"]
+
+[ext_resource type="FontFile" uid="uid://dhu3c1hh2yhjc" path="res://Assets/Font/Lobster/Lobster-Regular.ttf" id="1_majvr"]
+[ext_resource type="StyleBox" uid="uid://bnvr1g5ce5q2c" path="res://Prefab/Theme/hover_styleboxflat.tres" id="2_io3m3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_na8jj"]
+bg_color = Color(0.25, 0.16016667, 0.004999995, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+shadow_size = 5
+
+[resource]
+Button/colors/font_color = Color(0.6745098, 0.63529414, 0.47058824, 1)
+Button/colors/font_focus_color = Color(0.6745098, 0.63529414, 0.47058824, 1)
+Button/colors/font_pressed_color = Color(0, 0.7411765, 0.5764706, 1)
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_majvr")
+Button/styles/hover = ExtResource("2_io3m3")
+Button/styles/normal = SubResource("StyleBoxFlat_na8jj")

@@ -1,0 +1,149 @@
+[gd_scene load_steps=11 format=3 uid="uid://88p24lnvvwqq"]
+
+[ext_resource type="Script" uid="uid://nw6ewly2b772" path="res://Scripts/Scene/start_scene.gd" id="1_l05gu"]
+[ext_resource type="FontFile" uid="uid://buibujc7btj27" path="res://Assets/Font/Roboto/static/Roboto-Regular.ttf" id="2_dx02o"]
+[ext_resource type="PackedScene" uid="uid://3m80bodux23y" path="res://Prefab/screen_transition.tscn" id="3_3ne84"]
+
+[sub_resource type="Environment" id="Environment_ylxq0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csfj3"]
+bg_color = Color(0.1596, 0.24388, 0.28, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2d113"]
+font_size = 32
+font_color = Color(0.67451, 0.635294, 0.470588, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_53hov"]
+font_size = 256
+font_color = Color(0.67451, 0.635294, 0.470588, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ejy2n"]
+font = ExtResource("2_dx02o")
+font_size = 32
+
+[sub_resource type="Theme" id="Theme_4a4tu"]
+default_font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg18w"]
+bg_color = Color(0.34, 0.3128, 0.306, 1)
+
+[node name="StartScene" type="Node2D"]
+script = ExtResource("1_l05gu")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ylxq0")
+
+[node name="Template" type="Node2D" parent="."]
+
+[node name="BgColour" type="Panel" parent="Template"]
+offset_left = -69.0
+offset_top = -378.0
+offset_right = 1931.0
+offset_bottom = 1622.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_csfj3")
+
+[node name="Left Panel" type="Panel" parent="Template"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="MusicSlider" type="HSlider" parent="."]
+offset_left = 1443.0
+offset_top = 1008.0
+offset_right = 1643.0
+offset_bottom = 1038.0
+max_value = 1.0
+step = 0.0
+
+[node name="Label" type="Label" parent="MusicSlider"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = -43.0
+offset_right = 146.0
+offset_bottom = -3.0
+text = "Music"
+label_settings = SubResource("LabelSettings_2d113")
+
+[node name="EffectsSlider" type="HSlider" parent="."]
+offset_left = 1661.0
+offset_top = 1008.0
+offset_right = 1861.0
+offset_bottom = 1038.0
+max_value = 1.0
+step = 0.0
+
+[node name="Label" type="Label" parent="EffectsSlider"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = -43.0
+offset_right = 146.0
+offset_bottom = -3.0
+text = "Effects"
+label_settings = SubResource("LabelSettings_2d113")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 301.0
+offset_top = 67.0
+offset_right = 1648.0
+offset_bottom = 379.0
+text = "Trade Up!"
+label_settings = SubResource("LabelSettings_53hov")
+horizontal_alignment = 1
+
+[node name="DifficultyPanel" type="Panel" parent="."]
+custom_minimum_size = Vector2(500, 300)
+offset_left = 678.0
+offset_top = 544.0
+offset_right = 1178.0
+offset_bottom = 844.0
+
+[node name="Label" type="Label" parent="DifficultyPanel"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 18.0
+offset_right = 457.0
+offset_bottom = 56.0
+text = "Choose the level of difficulty"
+label_settings = SubResource("LabelSettings_ejy2n")
+
+[node name="EasyButton" type="Button" parent="DifficultyPanel"]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 70.0
+offset_right = 401.0
+offset_bottom = 130.0
+theme = SubResource("Theme_4a4tu")
+theme_override_colors/font_color = Color(0.67451, 0.635294, 0.470588, 1)
+theme_override_colors/font_focus_color = Color(0.67451, 0.635294, 0.470588, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.742683, 0.578355, 1)
+theme_override_styles/hover = SubResource("StyleBoxFlat_bg18w")
+text = "Easy: Start with many cards"
+
+[node name="NormalButton" type="Button" parent="DifficultyPanel"]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 130.0
+offset_right = 401.0
+offset_bottom = 190.0
+theme = SubResource("Theme_4a4tu")
+theme_override_colors/font_color = Color(0.67451, 0.635294, 0.470588, 1)
+theme_override_colors/font_focus_color = Color(0.67451, 0.635294, 0.470588, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.742683, 0.578355, 1)
+theme_override_styles/hover = SubResource("StyleBoxFlat_bg18w")
+text = "Normal: Start with some stuff"
+
+[node name="HardButton" type="Button" parent="DifficultyPanel"]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 197.0
+offset_right = 401.0
+offset_bottom = 257.0
+theme = SubResource("Theme_4a4tu")
+theme_override_colors/font_color = Color(0.67451, 0.635294, 0.470588, 1)
+theme_override_colors/font_focus_color = Color(0.67451, 0.635294, 0.470588, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.742683, 0.578355, 1)
+theme_override_styles/hover = SubResource("StyleBoxFlat_bg18w")
+text = "Hard: From the bottom to the top"
+
+[node name="ScreenTransition" parent="." instance=ExtResource("3_3ne84")]
+offset_right = 1920.0
+offset_bottom = 1080.0

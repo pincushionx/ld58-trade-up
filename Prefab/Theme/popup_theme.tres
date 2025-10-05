@@ -1,0 +1,16 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cyu6n3ari7vub"]
+
+[ext_resource type="FontFile" uid="uid://dhu3c1hh2yhjc" path="res://Assets/Font/Lobster/Lobster-Regular.ttf" id="1_2omfy"]
+[ext_resource type="FontFile" uid="uid://dmgokcso3lyj0" path="res://Assets/Font/Alan_Sans/static/AlanSans-Medium.ttf" id="2_jkb3l"]
+
+[resource]
+RichTextLabel/colors/default_color = Color(0.84705883, 0.80784315, 0.72156864, 1)
+RichTextLabel/constants/strikethrough_alpha = 100
+RichTextLabel/font_sizes/normal_font_size = 48
+RichTextLabel/fonts/normal_font = ExtResource("1_2omfy")
+RichTextLabel_Small/base_type = &"RichTextLabel"
+RichTextLabel_Small/font_sizes/normal_font_size = 20
+RichTextLabel_Small/fonts/normal_font = ExtResource("2_jkb3l")
+RichTextLabel__medium/base_type = &"RichTextLabel"
+RichTextLabel__medium/font_sizes/normal_font_size = 28
+RichTextLabel__medium/fonts/normal_font = ExtResource("2_jkb3l")

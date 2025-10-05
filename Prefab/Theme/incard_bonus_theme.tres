@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b1tl1iq38onn0"]
+
+[ext_resource type="FontFile" uid="uid://dhu3c1hh2yhjc" path="res://Assets/Font/Lobster/Lobster-Regular.ttf" id="1_uy33e"]
+
+[resource]
+RichTextLabel/colors/default_color = Color(0.6509804, 0.18431373, 0.011764706, 1)
+RichTextLabel/constants/strikethrough_alpha = 100
+RichTextLabel/font_sizes/normal_font_size = 24
+RichTextLabel/fonts/normal_font = ExtResource("1_uy33e")
+VBoxContainer/constants/separation = 0

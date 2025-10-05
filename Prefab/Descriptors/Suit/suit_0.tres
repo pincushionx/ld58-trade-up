@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SuitDescriptor" load_steps=4 format=3 uid="uid://behwl0yo57ae7"]
+
+[ext_resource type="Script" uid="uid://8pgalc2fs1xo" path="res://Scripts/Card/suit_descriptor.gd" id="1_nw4g7"]
+[ext_resource type="Texture2D" uid="uid://dv0ru585u5gd" path="res://Assets/Images/CardSlot-1-256.png" id="1_wy0tp"]
+[ext_resource type="Texture2D" uid="uid://dovtidd6w7gjc" path="res://Assets/Images/Icon/hearts-red-64.png" id="3_m5u2a"]
+
+[resource]
+script = ExtResource("1_nw4g7")
+background = ExtResource("1_wy0tp")
+suit_icon = ExtResource("3_m5u2a")
+metadata/_custom_type_script = "uid://8pgalc2fs1xo"

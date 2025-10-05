@@ -1,0 +1,112 @@
+[gd_scene load_steps=17 format=3 uid="uid://xo2ce4yo1jg0"]
+
+[ext_resource type="Script" uid="uid://sxnyp6v8svmy" path="res://Scripts/Scene.gd" id="1_kdubu"]
+[ext_resource type="Script" uid="uid://co5lx0p6ueo3f" path="res://Scripts/player.gd" id="1_q6r6c"]
+[ext_resource type="Script" uid="uid://cs0ls817q01wk" path="res://Scripts/table.gd" id="3_d21ai"]
+[ext_resource type="PackedScene" uid="uid://dh1xco3as72t0" path="res://Prefab/card_slot.tscn" id="4_q6r6c"]
+[ext_resource type="Script" uid="uid://n6tn68s60tld" path="res://Scripts/patrons.gd" id="6_kdubu"]
+[ext_resource type="Script" uid="uid://esc0upw1c5ke" path="res://Scripts/heat_deck.gd" id="7_d21ai"]
+[ext_resource type="Script" uid="uid://bn6uksb7rtt2i" path="res://Scripts/Temp/dealer.gd" id="7_rj586"]
+[ext_resource type="Script" uid="uid://to67h78amwo6" path="res://Scripts/discard_pile.gd" id="8_rj586"]
+[ext_resource type="Texture2D" uid="uid://dvjjk0da7k5gu" path="res://Assets/Images/Card-1.png" id="9_hqns4"]
+[ext_resource type="FontFile" uid="uid://diif8cph5byhx" path="res://Assets/Font/Cinzel_Decorative/CinzelDecorative-Black.ttf" id="11_0h7mo"]
+[ext_resource type="Script" uid="uid://bwm0dg1c22x3u" path="res://Scripts/deck_display.gd" id="11_x0ka3"]
+[ext_resource type="Texture2D" uid="uid://cmv4b43o8t52w" path="res://Assets/Images/CardSlot-1.png" id="12_0h7mo"]
+[ext_resource type="Script" uid="uid://8xdoi3u8eaug" path="res://Scripts/heat_meter.gd" id="13_0h7mo"]
+
+[sub_resource type="Environment" id="Environment_rj586"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hol4"]
+size = Vector2(256, 256)
+
+[sub_resource type="LabelSettings" id="LabelSettings_u4kf2"]
+font = ExtResource("11_0h7mo")
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_kdubu")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rj586")
+
+[node name="Player" type="Node2D" parent="."]
+script = ExtResource("1_q6r6c")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Board" type="Node2D" parent="."]
+
+[node name="Table" type="Node2D" parent="Board"]
+script = ExtResource("3_d21ai")
+
+[node name="CardSlot" parent="Board/Table" instance=ExtResource("4_q6r6c")]
+position = Vector2(0, -158)
+
+[node name="CardSlot2" parent="Board/Table" instance=ExtResource("4_q6r6c")]
+position = Vector2(-88, -158)
+
+[node name="CardSlot3" parent="Board/Table" instance=ExtResource("4_q6r6c")]
+position = Vector2(-175, -158)
+
+[node name="CardSlot4" parent="Board/Table" instance=ExtResource("4_q6r6c")]
+position = Vector2(-263, -158)
+
+[node name="Dealer" type="Node2D" parent="." node_paths=PackedStringArray("table")]
+script = ExtResource("7_rj586")
+table = NodePath("../Board/Table")
+
+[node name="Patrons" type="Area2D" parent="."]
+position = Vector2(0, 159)
+script = ExtResource("6_kdubu")
+
+[node name="CardSlot5" parent="Patrons" instance=ExtResource("4_q6r6c")]
+
+[node name="CardSlot6" parent="Patrons" instance=ExtResource("4_q6r6c")]
+position = Vector2(-88, 0)
+
+[node name="CardSlot7" parent="Patrons" instance=ExtResource("4_q6r6c")]
+position = Vector2(-175, 0)
+
+[node name="CardSlot8" parent="Patrons" instance=ExtResource("4_q6r6c")]
+position = Vector2(-263, 0)
+
+[node name="HeatDeck" type="Area2D" parent="."]
+position = Vector2(475, -236)
+script = ExtResource("7_d21ai")
+
+[node name="DiscardPile" parent="HeatDeck" instance=ExtResource("4_q6r6c")]
+position = Vector2(-86, 0)
+script = ExtResource("8_rj586")
+
+[node name="Sprite" type="Sprite2D" parent="HeatDeck"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("9_hqns4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeatDeck"]
+scale = Vector2(0.25, 0.25)
+shape = SubResource("RectangleShape2D_0hol4")
+
+[node name="StackCount" type="Label" parent="HeatDeck"]
+offset_left = -11.0
+offset_top = 6.0
+offset_right = 29.0
+offset_bottom = 29.0
+text = "99"
+label_settings = SubResource("LabelSettings_u4kf2")
+horizontal_alignment = 2
+
+[node name="DeckDisplay" type="Node2D" parent="."]
+script = ExtResource("11_x0ka3")
+
+[node name="Background" type="Sprite2D" parent="DeckDisplay"]
+texture = ExtResource("12_0h7mo")
+
+[node name="CardContainer" type="Node2D" parent="DeckDisplay"]
+
+[node name="HeatMeter" type="Node2D" parent="."]
+position = Vector2(-54, -284)
+script = ExtResource("13_0h7mo")
+
+[node name="Label" type="Label" parent="HeatMeter"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "HEAT: 99"

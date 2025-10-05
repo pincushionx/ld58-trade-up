@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://c2dj0mfqpeyxx"]
+
+[ext_resource type="FontFile" uid="uid://dhu3c1hh2yhjc" path="res://Assets/Font/Lobster/Lobster-Regular.ttf" id="1_o2rcd"]
+
+[resource]
+line_spacing = -20.0
+font = ExtResource("1_o2rcd")
+font_size = 64
+font_color = Color(0.6509804, 0.18431373, 0.011764706, 1)

@@ -1,0 +1,172 @@
+[gd_scene load_steps=14 format=3 uid="uid://bit5dwxqvtsk4"]
+
+[ext_resource type="Script" uid="uid://nw6ewly2b772" path="res://Scripts/Scene/start_scene.gd" id="1_ejy2n"]
+[ext_resource type="FontFile" uid="uid://dhu3c1hh2yhjc" path="res://Assets/Font/Lobster/Lobster-Regular.ttf" id="2_53hov"]
+[ext_resource type="LabelSettings" uid="uid://u0vcqxnseglw" path="res://Prefab/Theme/TableLabel.tres" id="3_cfqn4"]
+[ext_resource type="Theme" uid="uid://ckh7atktjn8d1" path="res://Prefab/Theme/start_menu_button_theme.tres" id="4_ptjug"]
+[ext_resource type="Texture2D" uid="uid://dovtidd6w7gjc" path="res://Assets/Images/Icon/hearts-red-64.png" id="5_33mov"]
+[ext_resource type="StyleBox" uid="uid://bnvr1g5ce5q2c" path="res://Prefab/Theme/hover_styleboxflat.tres" id="6_cfqn4"]
+[ext_resource type="Texture2D" uid="uid://bt53yai5upq82" path="res://Assets/Images/Icon/clubs-red-64.png" id="6_e4bpb"]
+[ext_resource type="Texture2D" uid="uid://dodpjbk4i5hp0" path="res://Assets/Images/Icon/spades-red-64.png" id="7_8glg8"]
+[ext_resource type="Texture2D" uid="uid://vtsxjc8qw8au" path="res://Assets/Images/Icon/diamonds-red-64.png" id="8_ptjug"]
+[ext_resource type="PackedScene" uid="uid://3m80bodux23y" path="res://Prefab/screen_transition.tscn" id="23_4sy1u"]
+
+[sub_resource type="Environment" id="Environment_ylxq0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csfj3"]
+bg_color = Color(0.1596, 0.24388, 0.28, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_h0k2m"]
+font = ExtResource("2_53hov")
+font_size = 256
+font_color = Color(0.84705883, 0.80784315, 0.72156864, 1)
+shadow_size = 50
+shadow_color = Color(0, 0, 0, 0.58431375)
+
+[node name="StartScene" type="Node2D"]
+script = ExtResource("1_ejy2n")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ylxq0")
+
+[node name="Template" type="Node2D" parent="."]
+
+[node name="BgColour" type="Panel" parent="Template"]
+offset_left = -69.0
+offset_top = -378.0
+offset_right = 1931.0
+offset_bottom = 1622.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_csfj3")
+
+[node name="Left Panel" type="Panel" parent="Template"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="MusicSlider" type="HSlider" parent="."]
+offset_left = 1443.0
+offset_top = 1008.0
+offset_right = 1643.0
+offset_bottom = 1038.0
+max_value = 1.0
+step = 0.0
+
+[node name="Label" type="Label" parent="MusicSlider"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = -59.0
+offset_right = 161.0
+offset_bottom = 1.0
+text = "Music"
+label_settings = ExtResource("3_cfqn4")
+
+[node name="EffectsSlider" type="HSlider" parent="."]
+offset_left = 1661.0
+offset_top = 1008.0
+offset_right = 1861.0
+offset_bottom = 1038.0
+max_value = 1.0
+step = 0.0
+
+[node name="Label" type="Label" parent="EffectsSlider"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = -59.0
+offset_right = 162.0
+offset_bottom = 1.0
+text = "Effects"
+label_settings = ExtResource("3_cfqn4")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 301.0
+offset_top = 67.0
+offset_right = 1648.0
+offset_bottom = 379.0
+text = "Trade Up!"
+label_settings = SubResource("LabelSettings_h0k2m")
+horizontal_alignment = 1
+
+[node name="DifficultyPanel" type="Control" parent="."]
+custom_minimum_size = Vector2(500, 300)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 678.0
+offset_top = 595.0
+offset_right = 1178.0
+offset_bottom = 895.0
+
+[node name="Label" type="Label" parent="DifficultyPanel"]
+layout_mode = 0
+offset_left = -93.0
+offset_top = -78.0
+offset_right = 704.0
+offset_bottom = -18.0
+text = "Choose the level of difficulty to start playing"
+label_settings = ExtResource("3_cfqn4")
+
+[node name="EasyButton" type="Button" parent="DifficultyPanel"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 24.0
+offset_right = 507.0
+offset_bottom = 84.0
+theme = ExtResource("4_ptjug")
+text = "Easy: Start with many cards"
+alignment = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="DifficultyPanel/EasyButton"]
+position = Vector2(-43, 22)
+texture = ExtResource("5_33mov")
+
+[node name="NormalButton" type="Button" parent="DifficultyPanel"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 91.0
+offset_right = 551.0
+offset_bottom = 151.0
+theme = ExtResource("4_ptjug")
+theme_override_colors/font_color = Color(0.67451, 0.635294, 0.470588, 1)
+theme_override_colors/font_focus_color = Color(0.67451, 0.635294, 0.470588, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.742683, 0.578355, 1)
+theme_override_styles/hover = ExtResource("6_cfqn4")
+text = "Normal: Start with some stuff"
+alignment = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="DifficultyPanel/NormalButton"]
+position = Vector2(-43, 22)
+texture = ExtResource("6_e4bpb")
+
+[node name="HardButton" type="Button" parent="DifficultyPanel"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 160.0
+offset_right = 600.0
+offset_bottom = 220.0
+theme = ExtResource("4_ptjug")
+theme_override_colors/font_color = Color(0.67451, 0.635294, 0.470588, 1)
+theme_override_styles/hover = ExtResource("6_cfqn4")
+text = "Hard: Trade from the bottom to the top"
+alignment = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="DifficultyPanel/HardButton"]
+position = Vector2(-43, 22)
+texture = ExtResource("8_ptjug")
+
+[node name="VeryHardButton" type="Button" parent="DifficultyPanel"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 228.0
+offset_right = 660.0
+offset_bottom = 288.0
+theme = ExtResource("4_ptjug")
+theme_override_colors/font_color = Color(0.67451, 0.635294, 0.470588, 1)
+theme_override_styles/hover = ExtResource("6_cfqn4")
+text = "Very Hard: Begin with a set of 1s"
+alignment = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="DifficultyPanel/VeryHardButton"]
+position = Vector2(-43, 22)
+texture = ExtResource("7_8glg8")
+
+[node name="ScreenTransition" parent="." instance=ExtResource("23_4sy1u")]
+offset_right = 1920.0
+offset_bottom = 1080.0

@@ -1,0 +1,132 @@
+[gd_scene load_steps=13 format=3 uid="uid://kyp2sv3sfthp"]
+
+[ext_resource type="Script" uid="uid://bsrqh8yqdikal" path="res://Scripts/Card/card.gd" id="1_yoylw"]
+[ext_resource type="Texture2D" uid="uid://dv0ru585u5gd" path="res://Assets/Images/CardSlot-1-256.png" id="2_kmab6"]
+[ext_resource type="Texture2D" uid="uid://bt53yai5upq82" path="res://Assets/Images/Icon/clubs-red-64.png" id="3_408hq"]
+[ext_resource type="LabelSettings" uid="uid://c2dj0mfqpeyxx" path="res://Prefab/Theme/card_bonus_font.tres" id="4_1qit3"]
+[ext_resource type="Theme" uid="uid://dfbe31laoal0w" path="res://Prefab/Theme/card_theme.tres" id="4_408hq"]
+[ext_resource type="Script" uid="uid://xvahhs58rq3" path="res://Scripts/Card/card_stat_hover.gd" id="4_u4kf2"]
+[ext_resource type="Theme" uid="uid://b1tl1iq38onn0" path="res://Prefab/Theme/incard_bonus_theme.tres" id="5_os8xj"]
+[ext_resource type="PackedScene" uid="uid://dnmsafhdnuhp2" path="res://Prefab/bonuses_label.tscn" id="6_kmab6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hol4"]
+size = Vector2(192, 192)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1qit3"]
+font_size = 24
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1qit3"]
+size = Vector2(185, 55)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kmab6"]
+font_size = 48
+
+[node name="Card" type="Area2D"]
+script = ExtResource("1_yoylw")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_kmab6")
+
+[node name="SuitSprite" type="Sprite2D" parent="."]
+position = Vector2(69, -70)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_408hq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_0hol4")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -42.0
+offset_top = -97.0
+offset_right = 76.0
+offset_bottom = -64.0
+text = "no label"
+label_settings = SubResource("LabelSettings_1qit3")
+
+[node name="NumberLabel" type="RichTextLabel" parent="."]
+offset_left = -88.0
+offset_top = -101.0
+offset_right = 41.0
+offset_bottom = -14.0
+theme = ExtResource("4_408hq")
+bbcode_enabled = true
+text = "[s] 9 [/s] 99"
+
+[node name="TotalNumberLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(180, 0)
+offset_left = -88.0
+offset_top = 43.0
+offset_right = 92.0
+offset_bottom = 130.0
+pivot_offset = Vector2(90, 0)
+theme = ExtResource("4_408hq")
+bbcode_enabled = true
+text = "= 999"
+horizontal_alignment = 2
+
+[node name="IncardBonusContainer" type="VBoxContainer" parent="."]
+offset_left = -84.0
+offset_top = -46.0
+offset_right = 96.0
+offset_bottom = 14.0
+theme = ExtResource("5_os8xj")
+
+[node name="BonusesLabel" parent="IncardBonusContainer" instance=ExtResource("6_kmab6")]
+layout_mode = 2
+
+[node name="BonusesLabel2" type="RichTextLabel" parent="IncardBonusContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme = ExtResource("5_os8xj")
+bbcode_enabled = true
+text = "x3 set of 3"
+fit_content = true
+
+[node name="ValueContainer" type="Area2D" parent="."]
+z_index = 11
+position = Vector2(-72, -142)
+script = ExtResource("4_u4kf2")
+
+[node name="BonusLabel" type="Label" parent="ValueContainer"]
+custom_minimum_size = Vector2(0, 150)
+offset_left = -15.0
+offset_top = -93.0
+offset_right = 161.0
+offset_bottom = 57.0
+pivot_offset = Vector2(22.5, 20)
+text = "999"
+label_settings = ExtResource("4_1qit3")
+vertical_alignment = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ValueContainer"]
+position = Vector2(70.5, 16.5)
+shape = SubResource("RectangleShape2D_1qit3")
+
+[node name="Log" type="PanelContainer" parent="ValueContainer"]
+visible = false
+z_index = 1
+offset_left = 38.0
+offset_top = -24.0
+offset_right = 488.0
+offset_bottom = 16.0
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ValueContainer/Log"]
+clip_contents = false
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+
+[node name="StackCount" type="Label" parent="."]
+visible = false
+offset_left = 28.0
+offset_top = 44.0
+offset_right = 92.0
+offset_bottom = 103.0
+text = "99"
+label_settings = SubResource("LabelSettings_kmab6")
+horizontal_alignment = 2

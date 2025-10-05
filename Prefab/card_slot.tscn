@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dh1xco3as72t0"]
+
+[ext_resource type="Script" uid="uid://duhgbopg3khpy" path="res://Scripts/Card/card_slot.gd" id="1_28sc5"]
+[ext_resource type="Texture2D" uid="uid://drdec1l5ugqpc" path="res://Assets/Images/Table/card_slot-desaturatedbeige.png" id="2_28sc5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hol4"]
+size = Vector2(192, 192)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28sc5"]
+bg_color = Color(0.160784, 0.243137, 0.278431, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.482353, 0.556863, 0.505882, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="CardSlot" type="Area2D"]
+script = ExtResource("1_28sc5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0hol4")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+offset_left = -96.0
+offset_top = -96.0
+offset_right = 96.0
+offset_bottom = 96.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_28sc5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.5019608)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_28sc5")
